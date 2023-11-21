@@ -1,5 +1,6 @@
 // home_page.dart
 import 'package:flutter/material.dart';
+import 'package:yoga_student/search_dumy.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -28,8 +29,13 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Add functionality for "Search Classes" button
-                  print('Search Classes button pressed');
+                  // Navigate to the SearchResultsPage and pass the email
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SearchResultsPage(userEmail: email),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   textStyle: TextStyle(fontSize: 18),
