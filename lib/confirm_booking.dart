@@ -1,11 +1,42 @@
-
+// ConfirmBookingPage.dart
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:yoga_student/web_api_save_bking.dart';
+import 'package:yoga_student/home.dart';
 
 class ConfirmBookingPage extends StatelessWidget {
+
   final String userEmail;
   final List<Map<String, dynamic>> selectedClasses;
 
-  ConfirmBookingPage({required this.userEmail, required this.selectedClasses});
+  ConfirmBookingPage({
+
+    required this.userEmail,
+    required this.selectedClasses,
+  });
+  String? errorMessage;
+
+  Future<void> submitBookings(BuildContext context) async {
+    // Call the submitBookings method from the ApiRequests class
+    final String? message = await ApiRequests.submitBookings( userEmail, selectedClasses);
+
+    if (message != null) {
+      // Print the message or handle it as needed
+      print('Booking Confirmation Message: $message');
+
+      // Navigate to the home page
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(email:userEmail ),
+        ),
+      );
+    } else {
+      // Handle the case where the message is null (error occurred)
+      // You can show an error message to the user if needed
+      errorMessage = 'An error occurred while confirming booking.';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +61,22 @@ class ConfirmBookingPage extends StatelessWidget {
           SizedBox(height: 16.0), // Add some spacing
           ElevatedButton(
             onPressed: () {
-              // Handle the logic for confirming booking
-              // You can add your booking confirmation logic here
-              print('Booking confirmed for classes: $selectedClasses');
-              Navigator.pop(context); // Close the ConfirmBookingPage
+              // Handle the logic for confirming booking and submitting HTTP request
+              submitBookings(context);
             },
             child: Text('Yes, Confirm'),
           ),
+          if (errorMessage != null)
+            Padding(
+              padding: EdgeInsets.only(top: 16.0),
+              child: Text(
+                errorMessage!,
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
         ],
       ),
     );
   }
 }
+
