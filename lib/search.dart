@@ -22,7 +22,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
     super.initState();
     classInstancesData = ApiService.fetchData();
 
-    // Initialize selectedItems once data is loaded
+    // Initialize selectedItems
     classInstancesData.then((data) {
       classInstances = data;
       selectedItems = List.generate(classInstances.length, (index) => false);
@@ -78,7 +78,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle the logic for booking classes using selectedItems
+          //  logic for booking classes
           List<MyClass> selectedClasses = [];
           for (int i = 0; i < selectedItems.length; i++) {
             if (selectedItems[i]) {

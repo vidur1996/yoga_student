@@ -7,12 +7,10 @@ class SearchResultsPage extends StatefulWidget {
 
   // Method to fetch or generate class instances data
   List<Map<String, dynamic>> getClassInstancesData() {
-    return [
-      {"instanceId": 1, "date": "05/12/2023", "teacher": "vidu", "classDay": "Tuesday", "classTime": "15:00"},
-      {"instanceId": 2, "date": "12/12/2023", "teacher": "zeeshan", "classDay": "Tuesday", "classTime": "15:00"},
-      {"instanceId": 3, "date": "09/12/2023", "teacher": "ali", "classDay": "Tuesday", "classTime": "12:00"},
-      {"instanceId": 4, "date": "16/12/2023", "teacher": "yaseer", "classDay": "Tuesday", "classTime": "12:00"},
-    ];
+    return [{"instanceId":1411,"date":"04/12/2023","teacher":"roy","classDay":"Monday","classTime":"02:30 PM"},
+            {"instanceId":1412,"date":"11/12/2023","teacher":"anna","classDay":"Monday","classTime":"02:30 PM"},
+            {"instanceId":1413,"date":"18/12/2023","teacher":"mason","classDay":"Monday","classTime":"02:30 PM"},
+            {"instanceId":1414,"date":"29/12/2023","teacher":"sam","classDay":"Friday","classTime":"10:30 PM"}];
   }
 
   @override

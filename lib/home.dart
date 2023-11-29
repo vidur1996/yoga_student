@@ -1,6 +1,5 @@
-// home_page.dart
 import 'package:flutter/material.dart';
-import 'package:yoga_student/search_dumy.dart';
+import 'package:yoga_student/search.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -43,16 +42,7 @@ class HomePage extends StatelessWidget {
                 child: Text('Search Classes'),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Add functionality for "Confirm Class Booking" button
-                  print('Confirm Class Booking button pressed');
-                },
-                style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(fontSize: 18),
-                ),
-                child: Text('Confirm Class Booking'),
-              ),
+
             ],
           ),
         ),

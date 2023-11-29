@@ -1,4 +1,4 @@
-// ConfirmBookingPage.dart
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:yoga_student/web_api_save_bking.dart';
@@ -21,7 +21,7 @@ class ConfirmBookingPage extends StatelessWidget {
     final String? message = await ApiRequests.submitBookings( userEmail, selectedClasses);
 
     if (message != null) {
-      // Print the message or handle it as needed
+      // Print the message
       print('Booking Confirmation Message: $message');
 
       // Navigate to the home page
@@ -32,8 +32,8 @@ class ConfirmBookingPage extends StatelessWidget {
         ),
       );
     } else {
-      // Handle the case where the message is null (error occurred)
-      // You can show an error message to the user if needed
+
+      // show an error message to the user
       errorMessage = 'An error occurred while confirming booking.';
     }
   }
@@ -61,7 +61,7 @@ class ConfirmBookingPage extends StatelessWidget {
           SizedBox(height: 16.0), // Add some spacing
           ElevatedButton(
             onPressed: () {
-              // Handle the logic for confirming booking and submitting HTTP request
+              //  logic for confirming booking and submitting HTTP request
               submitBookings(context);
             },
             child: Text('Yes, Confirm'),

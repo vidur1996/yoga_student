@@ -25,14 +25,14 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Image above TextField
+            // Image
             Image.asset(
               'assets/images/yoga.png',
               height: 100,
               width: 100,
             ),
             SizedBox(height: 20),
-            // TextField below Image
+            // TextField
             TextField(
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Validate the email before proceeding
+                // Validate the email
                 if (emailRegExp.hasMatch(emailController.text)) {
                   setState(() {
                     isEmailValid = true;
