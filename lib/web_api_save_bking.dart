@@ -1,14 +1,19 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+import 'my_class.dart';
 class ApiRequests {
-  static Future<String?> submitBookings( String userEmail, List<Map<String, dynamic>> selectedClasses) async {
+  static Future<String?> submitBookings( String userEmail, List<MyClass> selectedClasses ) async {
     final url = 'https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw/SubmitBookings';
 
     // Create the JSON payload
     final jsonPayload = {
       "userId": userEmail,
-      "bookingList": selectedClasses.map((selectedClass) => {"instanceId": selectedClass['instanceId']}).toList(),
+      "bookingList": selectedClasses.map((selectedClass) {
+        return {
+          "instanceId": selectedClass.instanceId,
+
+        };
+      }).toList(),
     };
 
     try {

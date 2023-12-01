@@ -3,22 +3,27 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:yoga_student/web_api_save_bking.dart';
 import 'package:yoga_student/home.dart';
+import 'my_class.dart';
 
 class ConfirmBookingPage extends StatelessWidget {
 
   final String userEmail;
-  final List<Map<String, dynamic>> selectedClasses;
+
+  // final List<Map<String, dynamic>> selectedClasses;
+  List<MyClass> selectedClasses = [];
 
   ConfirmBookingPage({
 
     required this.userEmail,
     required this.selectedClasses,
   });
+
   String? errorMessage;
 
   Future<void> submitBookings(BuildContext context) async {
     // Call the submitBookings method from the ApiRequests class
-    final String? message = await ApiRequests.submitBookings( userEmail, selectedClasses);
+    final String? message = await ApiRequests.submitBookings(
+        userEmail, selectedClasses);
 
     if (message != null) {
       // Print the message
@@ -28,11 +33,10 @@ class ConfirmBookingPage extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(email:userEmail ),
+          builder: (context) => HomePage(email: userEmail),
         ),
       );
     } else {
-
       // show an error message to the user
       errorMessage = 'An error occurred while confirming booking.';
     }
@@ -51,17 +55,16 @@ class ConfirmBookingPage extends StatelessWidget {
           Text('Selected Classes:'),
           for (var selectedClass in selectedClasses)
             ListTile(
-              title: Text('Teacher: ${selectedClass['teacher']}'),
+              title: Text('Teacher: ${selectedClass.teacher}'),
               subtitle: Text(
-                'Date: ${selectedClass['date']}\n'
-                    'Class Day: ${selectedClass['classDay']}\n'
-                    'Class Time: ${selectedClass['classTime']}',
+                'Date: ${selectedClass.date}\n'
+                    'Class Day: ${selectedClass.classDay}\n'
+                    'Class Time: ${selectedClass.classTime}',
               ),
             ),
-          SizedBox(height: 16.0), // Add some spacing
+          SizedBox(height: 16.0),
           ElevatedButton(
             onPressed: () {
-              //  logic for confirming booking and submitting HTTP request
               submitBookings(context);
             },
             child: Text('Yes, Confirm'),
@@ -79,4 +82,3 @@ class ConfirmBookingPage extends StatelessWidget {
     );
   }
 }
-

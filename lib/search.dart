@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yoga_student/web_api_get_list.dart';
 import 'package:yoga_student/confirm_booking.dart';
-
+import 'my_class.dart';
 class SearchResultsPage extends StatefulWidget {
   final String userEmail;
 
